@@ -9,7 +9,6 @@ import Subheader from 'material-ui/Subheader';
 import Toggle from 'material-ui/Toggle';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MyDrawer from './MyDrawer';
 import MyList from './MyList';
 
 class CoursesList extends Component {
@@ -21,6 +20,7 @@ class CoursesList extends Component {
             subjects: []
         };
         this.handleClose = this.handleClose.bind(this);
+        this.chooseCourse = this.chooseCourse.bind(this);
     }
 
     getChildContext() {
@@ -36,14 +36,18 @@ class CoursesList extends Component {
     }
 
     handleClose() {
-        this.props.parentClose();
+        this.props.handleClose();
+    }
+
+    chooseCourse(id) {
+        this.props.chooseCourse(id);
     }
 
     render() {
 
         const subjects = [];
         this.state.subjects.map((data) => {
-            subjects.push(<MyList key={data.id} item={data} parentClose={this.handleClose}/>);
+            subjects.push(<MyList key={data.id} item={data} handleClose={this.handleClose} chooseCourse={this.chooseCourse}/>);
         });
 
         return (

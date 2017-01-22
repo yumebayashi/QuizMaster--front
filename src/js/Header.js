@@ -5,7 +5,6 @@ import IconButton from 'material-ui/IconButton';
 import School from 'material-ui/svg-icons/social/school';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MyDrawer from './MyDrawer';
 
 
 class Header extends Component {
@@ -18,13 +17,12 @@ class Header extends Component {
     }
 
     handleCourseClick() {
-        this.refs.child.handleCourseClick();
+        this.props.handleCourseClick();
     }
 
     render() {
         return (
             <div>
-              <MyDrawer ref="child"/>
               <AppBar
                  title="Sample Quiz"
                  iconElementLeft={<IconButton><School /></IconButton>}

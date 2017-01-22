@@ -11,6 +11,7 @@ class MyDrawer extends Component {
         super(props);
         this.state = { open: false };
         this.handleClose = this.handleClose.bind(this);
+        this.chooseCourse = this.chooseCourse.bind(this);
     }
 
     handleCourseClick() {
@@ -25,11 +26,15 @@ class MyDrawer extends Component {
         return { muiTheme: getMuiTheme(baseTheme) };
     }
 
+    chooseCourse(id) {
+        this.props.chooseCourse(id);
+    }
+
     render() {
         return (
             <div>
               <Drawer open={this.state.open} onRequestChange={(open) => this.setState({open})} docked={false}>
-                <CoursesList parentClose={this.handleClose}/>
+                <CoursesList handleClose={this.handleClose} chooseCourse={this.chooseCourse}/>
               </Drawer>
             </div>
         );

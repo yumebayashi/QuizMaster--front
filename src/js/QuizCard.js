@@ -9,13 +9,11 @@ class QuizCard extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { title: "yasu" };
+        this.state = { title: "" };
     }
 
-    static setTitle(title) {
-        console.log(this);
+    setTitle(title) {
         this.setState({ title: title });
-        // this.titleRender(title);
     }
 
     getChildContext() {
