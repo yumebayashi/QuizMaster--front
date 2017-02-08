@@ -1,3 +1,5 @@
+# Readme
+
 ## version
 * node 7.0.0
 * es2015/ 6
@@ -9,6 +11,9 @@
 npm install
 npm run build-dev
 ```
+
+## not yet
+* test
 
 ## url
 http://s3-ap-northeast-1.amazonaws.com/umebayashibucket/tmp/q/index.html
