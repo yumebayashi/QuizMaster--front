@@ -1,6 +1,8 @@
 ## version
 * node 7.0.0
 * es2015/ 6
+* react 15.4.2
+* material-ui 0.16.7
 
 ## build
 ```
