@@ -9,7 +9,6 @@ import Subheader from 'material-ui/Subheader';
 import Toggle from 'material-ui/Toggle';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MyList from './MyList';
 
 class CoursesList extends Component {
 
@@ -19,8 +18,6 @@ class CoursesList extends Component {
             open: false,
             subjects: []
         };
-        this.handleClose = this.handleClose.bind(this);
-        this.chooseCourse = this.chooseCourse.bind(this);
     }
 
     getChildContext() {
@@ -28,28 +25,26 @@ class CoursesList extends Component {
     }
 
     componentDidMount() {
-        fetch("https://demo2739984.mockable.io/user/1")
+        const userId = window.prompt("input your userId", "");
+        fetch("http://160.16.121.168/api/users/" + userId)
             .then(response => response.json())
             .then(json => {
                 this.setState({ subjects: json });
             });
     }
 
-    handleClose() {
+    chooseCourse(id) {
+        this.props.chooseCourse(id);
         this.props.handleClose();
     }
 
-    chooseCourse(id) {
-        this.props.chooseCourse(id);
-    }
-
     render() {
-
         const subjects = [];
         this.state.subjects.map((data) => {
-            subjects.push(<MyList key={data.id} item={data} handleClose={this.handleClose} chooseCourse={this.chooseCourse}/>);
+            subjects.push(
+              <ListItem key={data.id} primaryText={data.name} secondaryText={data.subject_name} onClick={() => {this.chooseCourse(data.id)}}/>
+            );
         });
-
         return (
             <div>
               <MobileTearSheet>
@@ -65,6 +60,5 @@ class CoursesList extends Component {
 CoursesList.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired
 };
-
 
 export default CoursesList;

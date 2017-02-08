@@ -15,7 +15,7 @@ class MyApp extends Component {
     }
 
     chooseCourse(id){
-        this.refs.quiz.setTitle(id);
+        this.refs.quiz.setQuizs(id);
     }
 
     render() {
